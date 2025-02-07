@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dto.UserDTO;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class UserController {
     }
 
     @PostMapping("/create-user")
-    private User createUser(@RequestBody UserDTO request) {
+    private User createUser(@RequestBody @Valid UserDTO request) {
         return userService.createUser(request);
     }
 

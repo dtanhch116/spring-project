@@ -28,6 +28,10 @@ public class UserServiceImpl implements UserService {
     public User createUser(UserDTO request) {
         User user = new User();
 
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new RuntimeException("email already exists");
+        }
+
         user.setBirthday(request.getBirthday());
         user.setPassword(request.getPassword());
         user.setEmail(request.getEmail());

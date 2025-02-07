@@ -16,13 +16,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String userId;
 
-    private String Username;
+    private String username;
 
-    private String Password;
+    private String password;
 
-    private String Email;
+    private String email;
 
-    private String Phone;
+    private String phone;
 
-    private LocalDate Birthday;
+    private LocalDate birthday;
 }
