@@ -2,6 +2,8 @@ package com.example.demo.service.impl;
 
 import com.example.demo.dto.UserDTO;
 import com.example.demo.entity.User;
+import com.example.demo.exception.AppException;
+import com.example.demo.exception.ErrorCode;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 import org.springframework.beans.BeanUtils;
@@ -29,8 +31,10 @@ public class UserServiceImpl implements UserService {
         User user = new User();
 
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("email already exists");
+//            throw new AppException(ErrorCode.USER_EXISTED);
+            throw new RuntimeException("ErrorCode.USER_EXISTED");
         }
+
 
         user.setBirthday(request.getBirthday());
         user.setPassword(request.getPassword());

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 public class UserDTO {
     @JsonProperty("Username")
-    @Size(min = 6, message = "Tối thiểu 8 kí tự")
+    @Size(min = 6, message = "USER_NAME_INVALID")
     private String Username;
 
     @JsonProperty("Password")

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.ApiResponse;
 import com.example.demo.dto.UserDTO;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
@@ -23,8 +24,12 @@ public class UserController {
     }
 
     @PostMapping("/create-user")
-    private User createUser(@RequestBody @Valid UserDTO request) {
-        return userService.createUser(request);
+    private ApiResponse<User> createUser(@RequestBody @Valid UserDTO request) {
+        ApiResponse apiResponse = new ApiResponse<>();
+        apiResponse.setCode(200);
+        apiResponse.setMessage("success");
+        apiResponse.setData(userService.createUser(request));
+        return apiResponse;
     }
 
     @PostMapping("/update-user/{userId}")
