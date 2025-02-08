@@ -21,8 +21,16 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+    public User getUser(String id) {
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("user not found"));
+    }
+
     public User createUser(UserDTO request) {
         User user = new User();
+
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new RuntimeException("email already exists");
+        }
 
         user.setBirthday(request.getBirthday());
         user.setPassword(request.getPassword());
@@ -31,5 +39,19 @@ public class UserServiceImpl implements UserService {
         user.setUsername(request.getUsername());
 //        BeanUtils.copyProperties(request, user);
         return userRepository.save(user);
+    }
+
+    public User updateUser(String id, UserDTO request) {
+        User user = getUser(id);
+        user.setBirthday(request.getBirthday());
+        user.setPassword(request.getPassword());
+        user.setEmail(request.getEmail());
+        user.setPhone(request.getPhone());
+        user.setUsername(request.getUsername());
+        return userRepository.save(user);
+    }
+
+     public void deleteUser(String id) {
+        userRepository.deleteById(id);
     }
 }

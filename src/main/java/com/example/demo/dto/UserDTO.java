@@ -1,6 +1,7 @@
 package com.example.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 
 public class UserDTO {
     @JsonProperty("Username")
+    @Size(min = 6, message = "Tối thiểu 8 kí tự")
     private String Username;
 
     @JsonProperty("Password")
