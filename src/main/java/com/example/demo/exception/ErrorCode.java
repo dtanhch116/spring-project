@@ -9,7 +9,7 @@ public enum ErrorCode {
     UNCATEGORIZED_EXCEPTION (9999, "Uncategorized Exception"),
     INVALID_KEY (8888, "invalid key"),
     USER_NAME_INVALID (8888, "Tối thiểu 8 kí tự"),
-    USER_EXISTED (1001, "User already existed"),
+    EMAIL_EXISTED (1001, "email already existed"),
     ;
     private int code;
     private String message;
