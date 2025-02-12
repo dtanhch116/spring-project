@@ -28,13 +28,13 @@ public class UserController {
         return userService.getUsers();
     }
 
+
     @PostMapping("/create-user")
     private ApiResponse<User> createUser(@RequestBody @Valid UserDTO request) {
-        ApiResponse apiResponse = new ApiResponse<>();
+        ApiResponse apiResponse = new ApiResponse();
         apiResponse.setCode(200);
-        apiResponse.setMessage("success");
         apiResponse.setData(userService.createUser(request));
-        return apiResponse;
+       return apiResponse;
     }
 
     @PostMapping("/update-user/{userId}")
