@@ -2,28 +2,26 @@ package com.example.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Size;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
-
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserDTO {
-    @JsonProperty("Username")
-    @Size(min = 6, message = "Tối thiểu 8 kí tự")
-    private String Username;
+     @Size(min = 6, message = "USER_NAME_INVALID")
+     String username;
 
-    @JsonProperty("Password")
-    private String Password;
+     String password;
 
-    @JsonProperty("Email")
-    private String Email;
+     String email;
 
-    @JsonProperty("Phone")
-    private String Phone;
+     String phone;
 
-    @JsonProperty("Birthday")
-    private LocalDate Birthday;
+    private LocalDate birthday;
 }
